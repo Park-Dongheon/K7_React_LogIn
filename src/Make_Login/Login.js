@@ -5,13 +5,19 @@ import SubwayAir from "./SubwayAir";
 export default function Login() {
     const [sign, setSign] = useState(false);
     const selRef = useRef();
-    const inRef = useRef();
+    const idRef = useRef();
+    const passwordRef = useRef();
 
-    const handleUrl = () => {
-        setSign(!sign)
+    const jsonLogin = async() => {
+
+    };
+
+    const handleOk = () => {
+        if(sign) jsonLogin();
     };
 
     useEffect(() => {
+        let url = "";
         console.log()
     }, []);
 
@@ -33,6 +39,7 @@ export default function Login() {
                         </label>
                         <div className="mt-2">
                             <input id="email"
+                                   inRef={idRef}
                                    name="email"
                                    type="email"
                                    autocomplete="email"
@@ -56,6 +63,7 @@ export default function Login() {
                         </div>
                         <div className="mt-2">
                             <input id="password"
+                                   inRef={passwordRef}
                                    name="password"
                                    type="password"
                                    autocomplete="current-password"
@@ -66,7 +74,7 @@ export default function Login() {
                     <div>
                         <button type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                onClick={() => handleUrl}>
+                                onClick={handleOk}>
                             {sign ? "Sign Out" : "Sign In"}
                         </button>
                     </div>
